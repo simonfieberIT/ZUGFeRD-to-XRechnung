@@ -1,3 +1,20 @@
+const seoToggle = document.querySelector(".info-toggle");
+const seoContent = document.getElementById("seo-content");
+
+if (seoToggle && seoContent) {
+  seoToggle.addEventListener("click", () => {
+    const isHidden = seoContent.hasAttribute("hidden");
+    if (isHidden) {
+      seoContent.removeAttribute("hidden");
+      seoToggle.setAttribute("aria-expanded", "true");
+      seoToggle.textContent = "Infos & FAQ ausblenden";
+    } else {
+      seoContent.setAttribute("hidden", "");
+      seoToggle.setAttribute("aria-expanded", "false");
+      seoToggle.textContent = "Mehr Infos & FAQ anzeigen";
+    }
+  });
+}
 const fileInput = document.getElementById("file-input");
 const fileName = document.getElementById("file-name");
 const form = document.getElementById("upload-form");

@@ -1,3 +1,69 @@
+/* SEO/FAQ Section styles */
+
+/* SEO/FAQ Section styles */
+
+.info-section {
+  margin-top: 18px;
+  padding: 16px;
+  border-radius: 14px;
+  background: radial-gradient(circle at top left, rgba(15,23,42,0.9), rgba(15,23,42,0.98));
+  border: 1px solid rgba(148,163,184,0.4);
+  font-size: 0.86rem;
+  line-height: 1.55;
+}
+.info-section h2 {
+  font-size: 1rem;
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+.faq-item {
+  margin-top: 10px;
+  padding-left: 4px;
+}
+.faq-item strong {
+  display: block;
+  margin-bottom: 2px;
+}
+
+.info-toggle {
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.5);
+  background: transparent;
+  color: inherit;
+  font-size: 0.82rem;
+  cursor: pointer;
+  transition: border-color 0.16s ease, background 0.16s ease;
+}
+
+.info-toggle:hover {
+  border-color: #60a5fa;
+}
+
+.seo-list {
+  margin: 8px 0 4px;
+  padding-left: 18px;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+.seo-list li + li {
+  margin-top: 3px;
+}
+
+.faq-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 10px;
+  margin-top: 8px;
+}
+
+.faq-grid .faq-item {
+  margin-top: 0;
+  padding-left: 0;
+}
 /* Basis Layout */
 
 *,
@@ -92,6 +158,12 @@ body {
 
 .app-subtitle {
   font-size: 0.9rem;
+  color: #9ca3af;
+  margin-top: 4px;
+}
+
+.app-description {
+  font-size: 0.86rem;
   color: #9ca3af;
   margin-top: 4px;
 }
@@ -385,6 +457,9 @@ button:disabled {
   .app-subtitle {
     color: #4b5563;
   }
+  .app-description {
+    color: #4b5563;
+  }
 
   .badge {
     border-color: rgba(148,163,184,0.7);
@@ -462,5 +537,33 @@ button:disabled {
     background-color: #f9fafb;
     border-color: rgba(209,213,219,0.9);
     color: #111827;
+  }
+  .info-section {
+    background: transparent;
+    border: none;
+    color: #111827;
+    margin-top: 18px;
+  }
+
+  .info-section h2 {
+    color: #111827;
+  }
+
+  .faq-item strong {
+    color: #111827;
+  }
+
+  .seo-divider {
+    margin: 10px 0 12px;
+    border-top: 1px solid rgba(209,213,219,0.9);
+  }
+
+  .info-toggle {
+    border-color: rgba(156,163,175,0.8);
+    color: #111827;
+  }
+
+  .info-toggle:hover {
+    border-color: #2563eb;
   }
 }

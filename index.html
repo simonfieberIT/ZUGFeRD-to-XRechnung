@@ -6,19 +6,63 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="description" content="Konvertiere ZUGFeRD / Factur-X PDF-Rechnungen mit eingebetteter XML lokal im Browser nach XRechnung. Keine Datenübertragung, Open Source unter CC BY-NC-SA 4.0." />
   <link rel="canonical" href="https://rechnungskonverter.de/" />
+  <meta property="og:title" content="ZUGFeRD / Factur-X nach XRechnung · Kostenloser Browser Konverter" />
+  <meta property="og:description" content="Konvertiere ZUGFeRD / Factur-X PDF‑Rechnungen lokal im Browser zu XRechnung. Keine Datenübertragung, kostenlos und Open Source." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rechnungskonverter.de/" />
   <link rel="stylesheet" href="styles.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Werden meine Dateien hochgeladen oder gespeichert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Der gesamte Vorgang läuft lokal im Browser. Es findet keine Übertragung und keine Speicherung auf Servern statt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Unterstützt das Tool alle ZUGFeRD- und Factur-X-Versionen?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das Tool unterstützt gängige ZUGFeRD- und Factur-X-Formate mit eingebetteter XML. Abweichende oder proprietäre Varianten können im Einzelfall abweichen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich die erzeugte XRechnung an Behörden senden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Die erzeugte XML entspricht dem XRechnung-Standard EN16931 und kann bei Auftraggebern des öffentlichen Sektors eingereicht werden."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert der Konverter auch auf dem Smartphone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Das Tool funktioniert auf aktuellen mobilen Browsern genauso wie auf Desktop-Geräten."
+          }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
   <div class="app">
     <header class="app-header">
       <div>
         <div class="badge">
-          <span>🔒 Läuft nur auf deinem Gerät</span>
-          <span>Deine Dateien werden nicht hochgeladen</span>
+          <span>🔒 Läuft nur auf deinem Gerät, deine Dateien werden nicht hochgeladen.</span>
         </div>
         <h1 class="app-title">ZUGFeRD / Factur-X nach XRechnung</h1>
-        <p class="app-subtitle">
-          Lade eine PDF mit eingebetteter XML hoch. Falls nötig, ergänze Leitweg-ID und Lieferantennummer.
+        <p class="app-description">
+          Dieses Tool wandelt ZUGFeRD / Factur‑X PDF‑Rechnungen lokal im Browser in XRechnung um.<br/>
+          Keine Registrierung, keine Datenübertragung.
         </p>
       </div>
     </header>
@@ -89,6 +133,50 @@
       </section>
     </main>
 
+    <section class="info-section">
+      <button
+        type="button"
+        class="info-toggle"
+        aria-expanded="false"
+        aria-controls="seo-content"
+      >
+        Mehr Infos & FAQ anzeigen
+      </button>
+
+      <div id="seo-content" hidden>
+        <h2>Was macht dieses Tool?</h2>
+        <p>
+          Dieses Browser‑Tool wandelt ZUGFeRD‑ bzw. Factur‑X‑PDFs mit eingebetteter XML lokal in eine gültige XRechnung um.
+        </p>
+
+        <h2>Kurz erklärt</h2>
+        <ul class="seo-list">
+          <li><strong>ZUGFeRD / Factur‑X:</strong> PDF mit eingebetteter XML‑Rechnung.</li>
+          <li><strong>XRechnung:</strong> Standard für E‑Rechnungen an deutsche Behörden.</li>
+          <li><strong>Lokal im Browser:</strong> Dateien werden nicht hochgeladen oder gespeichert.</li>
+        </ul>
+        <div class="seo-divider"></div>
+
+        <h2>Häufige Fragen</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <strong>Werden Dateien gespeichert?</strong>
+            <p>Nein, alles bleibt im Browser auf deinem Gerät.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>Welche Formate werden unterstützt?</strong>
+            <p>ZUGFeRD‑ und Factur‑X‑PDFs mit eingebetteter XML.</p>
+          </div>
+
+          <div class="faq-item">
+            <strong>Kostet der Dienst etwas?</strong>
+            <p>Die Nutzung ist kostenlos. Der Quellcode ist öffentlich einsehbar.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
     <footer class="app-footer">
       <div class="footer-left">
         <a
@@ -99,7 +187,7 @@
           aria-label="GitHub-Projekt ZUGFeRD-to-XRechnung (Quellcode auf GitHub)"
           title="Quellcode auf GitHub (öffnet in neuem Tab)"
         >
-          v1.0.1
+          v1.0.2
         </a>
       </div>
       <div class="footer-right">
