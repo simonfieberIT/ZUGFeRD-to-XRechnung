@@ -64,6 +64,28 @@
   margin-top: 0;
   padding-left: 0;
 }
+
+.share-links {
+  margin-top: 10px;
+  font-size: 0.8rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.share-links a {
+  color: #bfdbfe;
+  text-decoration: none;
+}
+
+.share-links a:hover {
+  text-decoration: underline;
+}
+
+.share-separator {
+  opacity: 0.7;
+}
 /* Basis Layout */
 
 *,
@@ -600,6 +622,9 @@ button:disabled {
 
   .info-toggle:hover {
     border-color: #2563eb;
+  }
+  .share-links a {
+    color: #2563eb;
   }
 }
   .kofi-btn {

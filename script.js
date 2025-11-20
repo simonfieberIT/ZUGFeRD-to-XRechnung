@@ -15,6 +15,26 @@ if (seoToggle && seoContent) {
     }
   });
 }
+
+const faqLink = document.querySelector('a[href="#faq"]');
+if (faqLink && seoContent) {
+  faqLink.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if (seoContent.hasAttribute("hidden")) {
+      seoContent.removeAttribute("hidden");
+      if (seoToggle) {
+        seoToggle.setAttribute("aria-expanded", "true");
+        seoToggle.textContent = "Infos & FAQ ausblenden";
+      }
+    }
+
+    const faqHeading = document.getElementById("faq");
+    if (faqHeading) {
+      faqHeading.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  });
+}
 const fileInput = document.getElementById("file-input");
 const fileName = document.getElementById("file-name");
 const form = document.getElementById("upload-form");
