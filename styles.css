@@ -134,7 +134,14 @@ body {
 }
 
 .app-footer a:hover {
-  text-decoration: underline;
+  text-decoration: none;
+}
+
+.kofi-btn,
+.kofi-btn:hover,
+.kofi-btn:focus {
+  color: #fff !important;
+  text-decoration: none !important;
 }
 
 .footer-separator {
@@ -354,6 +361,10 @@ input[type="text"]:focus, input[type="email"]:focus {
   margin-top: 4px;
 }
 
+.button-row.compact {
+  margin-top: 0;
+}
+
 button {
   border-radius: 999px;
   border: 1px solid transparent;
@@ -381,6 +392,30 @@ button:disabled {
   cursor: default;
   transform: none;
   box-shadow: none;
+}
+
+/* Ko-Fi Button */
+.kofi-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(148,163,184,0.45);
+  background: linear-gradient(135deg, #f97316, #ea580c);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 500;
+  text-decoration: none;       /* wichtig: kein Link-Look */
+  text-align: center;
+  box-shadow: 0 8px 20px rgba(234,88,12,0.45);
+  transition: transform 0.08s ease, box-shadow 0.12s ease;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.kofi-btn:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 26px rgba(234,88,12,0.55);
 }
 
 /* Status und Log */
@@ -566,4 +601,19 @@ button:disabled {
   .info-toggle:hover {
     border-color: #2563eb;
   }
+}
+  .kofi-btn {
+    background: linear-gradient(135deg, #fb923c, #f97316);
+    color: #fff;
+    border-color: rgba(156,163,175,0.8);
+    box-shadow: 0 8px 20px rgba(249,115,22,0.35);
+    text-decoration: none;
+  }
+
+  .kofi-btn:hover {
+    box-shadow: 0 12px 26px rgba(249,115,22,0.45);
+    text-decoration: none;
+  }
+.support-container {
+  margin-top: 8px;
 }

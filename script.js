@@ -19,11 +19,18 @@ const fileInput = document.getElementById("file-input");
 const fileName = document.getElementById("file-name");
 const form = document.getElementById("upload-form");
 const statusEl = document.getElementById("status");
+const supportContainer = document.getElementById("support-container");
 const extraFields = document.getElementById("xrechnung-fields");
 const leitwegInput = document.getElementById("leitweg");
 const supplierIdInput = document.getElementById("supplier-id");
 const buyerEmailInput = document.getElementById("buyer-email");
 const dropzone = document.querySelector(".dropzone");
+
+const convertButton = form ? form.querySelector('button[type="submit"]') : null;
+const buttonRow = form ? form.querySelector(".button-row") : null;
+if (convertButton) {
+  convertButton.dataset.originalDisplay = getComputedStyle(convertButton).display || "inline-flex";
+}
 
 // Zustand für den zweistufigen Ablauf
 let currentXmlDoc = null;
@@ -93,6 +100,12 @@ if (dropzone) {
   // Datei als aktuell ausgewählte Datei merken und UI aktualisieren
   selectedFile = file;
   fileName.textContent = file.name;
+  if (convertButton) {
+    convertButton.style.display = convertButton.dataset.originalDisplay || "inline-flex";
+  }
+  if (buttonRow) {
+    buttonRow.classList.remove("compact");
+  }
 });
 }
 
@@ -103,16 +116,25 @@ fileInput.addEventListener("change", () => {
   if (fileInput.files && fileInput.files.length > 0) {
     selectedFile = fileInput.files[0];
     fileName.textContent = selectedFile.name;
+    if (convertButton) {
+      convertButton.style.display = convertButton.dataset.originalDisplay || "inline-flex";
+    }
+    if (buttonRow) {
+      buttonRow.classList.remove("compact");
+    }
   } else {
     selectedFile = null;
     fileName.textContent = "Noch keine Datei ausgewählt";
+    if (buttonRow) {
+      buttonRow.classList.remove("compact");
+    }
   }
 });
 
 form.addEventListener("submit", async (e) => {
   e.preventDefault();
 
-    if (!selectedFile) {
+  if (!selectedFile) {
     setStatus("Bitte zuerst eine PDF auswählen.", "error");
     return;
   }
@@ -140,16 +162,33 @@ form.addEventListener("submit", async (e) => {
       const { isXRechnungAlready, guidelineValue } = inspectGuideline(xmlDoc);
       const { buyerEmailPresent } = inspectBuyerEmail(xmlDoc);
 
-      if (isXRechnungAlready) {
-        // bereits XRechnung, direkt ausgeben
-        setStatus(
-          "Die eingebettete XML ist bereits als XRechnung gekennzeichnet. Datei wird erzeugt …",
-          "info"
-        );
+            if (isXRechnungAlready) {
         const finalXml = serializeXml(xmlDoc);
-        triggerDownload(finalXml, currentBaseName + "_xrechnung.xml");
-        setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
-        resetState();
+
+        if (convertButton) {
+          convertButton.style.display = "none";
+        }
+        if (buttonRow) {
+          buttonRow.classList.add("compact");
+        }
+        if (supportContainer) {
+          supportContainer.hidden = false;
+        }
+        if (extraFields) {
+          extraFields.style.display = "none";
+        }
+
+        const baseNameForDownload = currentBaseName || "Rechnung";
+        startDownloadCountdown(
+          5,
+          "Die eingebettete XML ist bereits als XRechnung gekennzeichnet. Die XRechnung wird",
+          () => {
+            triggerDownload(finalXml, baseNameForDownload + "-XRechnung.xml");
+            setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
+            resetState();
+          }
+        );
+
         return;
       }
 
@@ -209,13 +248,33 @@ form.addEventListener("submit", async (e) => {
     });
 
     const finalXml = serializeXml(upgraded);
-    triggerDownload(finalXml, (currentBaseName || "xrechnung") + "_xrechnung.xml");
-    setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
+
+    if (convertButton) {
+      convertButton.style.display = "none";
+    }
+    if (buttonRow) {
+      buttonRow.classList.add("compact");
+    }
+    if (supportContainer) {
+      supportContainer.hidden = false;
+    }
+    if (extraFields) {
+      extraFields.style.display = "none";
+    }
+
+    const baseNameForDownload = currentBaseName || "Rechnung";
+    startDownloadCountdown(
+      5,
+      "XRechnung wurde erzeugt und wird",
+      () => {
+        triggerDownload(finalXml, baseNameForDownload + "-XRechnung.xml");
+        setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
+        resetState();
+      }
+    );
   } catch (err) {
     console.error(err);
     setStatus(err.message || "Fehler beim Erzeugen der XRechnung.", "error");
-  } finally {
-    resetState();
   }
 });
 
@@ -244,6 +303,29 @@ function setStatus(message, type) {
     statusEl.classList.add("ok");
   }
   // "info" bleibt neutral
+}
+
+function startDownloadCountdown(seconds, messagePrefix, onFinish) {
+  let remaining = seconds;
+
+  function updateMessage() {
+    const unit = remaining === 1 ? "Sekunde" : "Sekunden";
+    setStatus(`${messagePrefix} in ${remaining} ${unit} heruntergeladen …`, "info");
+  }
+
+  updateMessage();
+
+  const intervalId = setInterval(() => {
+    remaining -= 1;
+    if (remaining > 0) {
+      updateMessage();
+    } else {
+      clearInterval(intervalId);
+      if (typeof onFinish === "function") {
+        onFinish();
+      }
+    }
+  }, 1000);
 }
 
 /**
@@ -515,6 +597,4 @@ function triggerDownload(text, filename) {
   a.click();
   a.remove();
   window.URL.revokeObjectURL(url);
-
-  resetState();
 }
