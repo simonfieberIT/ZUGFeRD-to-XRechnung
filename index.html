@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>ZUGFeRD / Factur-X nach XRechnung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <div class="badge">
+          <span>🔒 Läuft nur auf deinem Gerät</span>
+          <span>Deine Dateien werden nicht hochgeladen</span>
+        </div>
+        <h1 class="app-title">ZUGFeRD / Factur-X nach XRechnung</h1>
+        <p class="app-subtitle">
+          Lade eine PDF mit eingebetteter XML hoch. Falls nötig, ergänze Leitweg-ID und Lieferantennummer.
+        </p>
+      </div>
+    </header>
+
+    <main class="app-main">
+      <!-- Linke Karte: Upload -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">PDF hochladen</h2>
+          <span class="card-hint">ZUGFeRD / Factur-X PDF</span>
+        </div>
+
+        <label class="dropzone">
+          <div class="dropzone-icon">📄</div>
+          <div class="dropzone-text-main">Datei hierhin ziehen oder klicken</div>
+          <div class="dropzone-text-sub">Unterstützt: PDF mit eingebetteter XML</div>
+          <input id="file-input" type="file" accept="application/pdf" />
+        </label>
+
+        <div class="file-info">
+          <span>Ausgewählte Datei:</span>
+          <span id="file-name">Noch keine Datei ausgewählt</span>
+        </div>
+      </section>
+
+      <!-- Rechte Karte: XRechnung Felder -->
+      <section class="card">
+        <div class="card-header">
+          <h2 class="card-title">XRechnung Angaben</h2>
+        </div>
+
+        <form id="upload-form" class="form-grid">
+          <div id="xrechnung-fields">
+            <div class="form-section">
+              <div class="form-section-title">Pflichtfeld für die XRechnung</div>
+              <div class="form-row">
+                <label for="buyer-email">Käufer E-Mail (elektronische Adresse)</label>
+                <input id="buyer-email" type="email" placeholder="z. B. rechnung@kunde.de" />
+              </div>
+            </div>
+
+            <div class="form-section">
+              <div class="form-section-title">Optionale Angaben</div>
+              <div class="form-row">
+                <label for="leitweg">Leitweg-ID (BuyerReference)</label>
+                <input id="leitweg" type="text" placeholder="z. B. 12345-67890-12345-67" />
+              </div>
+
+              <div class="form-row">
+                <label for="supplier-id">Lieferantennummer beim Kunden</label>
+                <input id="supplier-id" type="text" placeholder="Kundennummer beim Rechnungsempfänger" />
+              </div>
+            </div>
+          </div>
+
+          <div class="button-row">
+            <button type="submit">
+              <span>In XRechnung umwandeln</span>
+            </button>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <div id="status" class="status-pill">
+              Bereit für Upload
+            </div>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <a href="https://fieber-it.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+      <span class="footer-separator">·</span>
+      <a href="https://fieber-it.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+    </footer>
+  </div>
+
+  <script src="script.js" defer></script>
+</body>
+</html>
