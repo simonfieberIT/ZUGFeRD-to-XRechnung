@@ -16,35 +16,40 @@ if (seoToggle && seoContent) {
   });
 }
 
-const faqLink = document.querySelector('a[href="#faq"]');
-if (faqLink && seoContent) {
-  faqLink.addEventListener("click", (event) => {
-    event.preventDefault();
+const anchorTargets = ["faq", "howto"];
+anchorTargets.forEach((id) => {
+  const link = document.querySelector(`a[href="#${id}"]`);
+  if (link && seoContent) {
+    link.addEventListener("click", (event) => {
+      event.preventDefault();
 
-    if (seoContent.hasAttribute("hidden")) {
-      seoContent.removeAttribute("hidden");
-      if (seoToggle) {
-        seoToggle.setAttribute("aria-expanded", "true");
-        seoToggle.textContent = "Infos & FAQ ausblenden";
+      if (seoContent.hasAttribute("hidden")) {
+        seoContent.removeAttribute("hidden");
+        if (seoToggle) {
+          seoToggle.setAttribute("aria-expanded", "true");
+          seoToggle.textContent = "Infos & FAQ ausblenden";
+        }
       }
-    }
 
-    const faqHeading = document.getElementById("faq");
-    if (faqHeading) {
-      faqHeading.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  });
-}
+      const target = document.getElementById(id);
+      if (target) {
+        target.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    });
+  }
+});
 const fileInput = document.getElementById("file-input");
 const fileName = document.getElementById("file-name");
 const form = document.getElementById("upload-form");
 const statusEl = document.getElementById("status");
 const supportContainer = document.getElementById("support-container");
+const supportHint = document.getElementById("support-hint");
 const extraFields = document.getElementById("xrechnung-fields");
 const leitwegInput = document.getElementById("leitweg");
 const supplierIdInput = document.getElementById("supplier-id");
 const buyerEmailInput = document.getElementById("buyer-email");
 const dropzone = document.querySelector(".dropzone");
+const subtleFooterBanner = document.getElementById("subtle-footer-banner");
 
 const convertButton = form ? form.querySelector('button[type="submit"]') : null;
 const buttonRow = form ? form.querySelector(".button-row") : null;
@@ -59,7 +64,9 @@ let upgradeNeeded = false;
 let buyerEmailRequired = false;
 let selectedFile = null;
 
-function resetProcessingState() {
+function resetProcessingState(options = {}) {
+  const { preserveSupport = false } = options;
+
   currentXmlDoc = null;
   currentBaseName = null;
   upgradeNeeded = false;
@@ -71,6 +78,22 @@ function resetProcessingState() {
   if (buyerEmailInput) {
     buyerEmailInput.value = "";
     buyerEmailInput.required = false;
+  }
+
+  if (!preserveSupport) {
+    if (supportHint) {
+      supportHint.hidden = true;
+    }
+    if (subtleFooterBanner) {
+      subtleFooterBanner.hidden = true;
+    }
+    if (supportContainer) {
+      supportContainer.hidden = true;
+      const kofiButton = supportContainer.querySelector(".kofi-btn");
+      if (kofiButton) {
+        kofiButton.classList.remove("kofi-pulse");
+      }
+    }
   }
 }
 
@@ -97,7 +120,7 @@ if (dropzone) {
     dropzone.classList.remove("dragover");
   });
 
-  dropzone.addEventListener("drop", (event) => {
+dropzone.addEventListener("drop", (event) => {
   event.preventDefault();
   dropzone.classList.remove("dragover");
 
@@ -193,6 +216,10 @@ form.addEventListener("submit", async (e) => {
         }
         if (supportContainer) {
           supportContainer.hidden = false;
+          const kofiButton = supportContainer.querySelector(".kofi-btn");
+          if (kofiButton) {
+            kofiButton.classList.add("kofi-pulse");
+          }
         }
         if (extraFields) {
           extraFields.style.display = "none";
@@ -205,6 +232,12 @@ form.addEventListener("submit", async (e) => {
           () => {
             triggerDownload(finalXml, baseNameForDownload + "-XRechnung.xml");
             setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
+            if (supportHint) {
+              supportHint.hidden = false;
+            }
+            if (subtleFooterBanner) {
+              subtleFooterBanner.hidden = false;
+            }
             resetState();
           }
         );
@@ -277,6 +310,10 @@ form.addEventListener("submit", async (e) => {
     }
     if (supportContainer) {
       supportContainer.hidden = false;
+      const kofiButton = supportContainer.querySelector(".kofi-btn");
+      if (kofiButton) {
+        kofiButton.classList.add("kofi-pulse");
+      }
     }
     if (extraFields) {
       extraFields.style.display = "none";
@@ -289,6 +326,12 @@ form.addEventListener("submit", async (e) => {
       () => {
         triggerDownload(finalXml, baseNameForDownload + "-XRechnung.xml");
         setStatus("XRechnung wurde lokal erzeugt und heruntergeladen.", "success");
+        if (supportHint) {
+          supportHint.hidden = false;
+        }
+        if (subtleFooterBanner) {
+          subtleFooterBanner.hidden = false;
+        }
         resetState();
       }
     );
@@ -300,7 +343,7 @@ form.addEventListener("submit", async (e) => {
 
 function resetState() {
   // internen Zustand leeren
-  resetProcessingState();
+  resetProcessingState({ preserveSupport: true });
 
   // Dateiauswahl zurücksetzen
   selectedFile = null;
@@ -431,7 +474,7 @@ async function extractXmlFromPdf(file) {
     // 5. Fallback: deflate-komprimierte XML dekomprimieren
     if (!window.pako) {
       throw new Error(
-        "Der EmbeddedFile-Stream ist nicht direkt als XML lesbar und pako (Zlib) ist nicht geladen."
+        "Der EmbeddedFile-Stream ist komprimiert. Bitte stelle sicher, dass die Datei „pako.min.js“ korrekt eingebunden ist."
       );
     }
 
