@@ -95,12 +95,12 @@
       </div>
     </header>
 
-    <main class="app-main">
-      <!-- Linke Karte: Upload -->
-      <section class="card">
-        <div class="card-header">
-          <h2 class="card-title">PDF hochladen</h2>
-          <span class="card-hint">ZUGFeRD / Factur-X PDF</span>
+    <form id="upload-form">
+      <!-- Schritt 1: PDF auswählen -->
+      <section class="step" id="step-1">
+        <div class="step-header">
+          <span class="step-number">1</span>
+          <span class="step-title">PDF auswählen</span>
         </div>
 
         <label class="dropzone">
@@ -116,66 +116,64 @@
         </div>
       </section>
 
-      <!-- Rechte Karte: XRechnung Felder -->
-      <section class="card">
-        <div class="card-header">
-          <h2 class="card-title">XRechnung Angaben</h2>
+      <!-- Schritt 2: Angaben ergänzen (locked until PDF analysis) -->
+      <section class="step step-locked" id="step-2">
+        <div class="step-header">
+          <span class="step-number">2</span>
+          <span class="step-title">Angaben ergänzen</span>
         </div>
 
-        <form id="upload-form" class="form-grid">
-          <div id="xrechnung-fields">
-            <div class="form-section">
-              <div class="form-section-title">Pflichtfeld für die XRechnung</div>
-              <div class="form-row">
-                <label for="buyer-email">Käufer E-Mail (elektronische Adresse)</label>
-                <input id="buyer-email" type="email" placeholder="z. B. rechnung@kunde.de" />
-              </div>
-            </div>
-
-            <div class="form-section">
-              <div class="form-section-title">Optionale Angaben</div>
-              <div class="form-row">
-                <label for="leitweg">Leitweg-ID (BuyerReference)</label>
-                <input id="leitweg" type="text" placeholder="z. B. 12345-67890-12345-67" />
-              </div>
-
-              <div class="form-row">
-                <label for="supplier-id">Lieferantennummer beim Kunden</label>
-                <input id="supplier-id" type="text" placeholder="Kundennummer beim Rechnungsempfänger" />
-              </div>
+        <div id="xrechnung-fields">
+          <div class="form-section">
+            <div class="form-section-title">Pflichtfeld für die XRechnung</div>
+            <div class="form-row">
+              <label for="buyer-email">Käufer E-Mail (elektronische Adresse)</label>
+              <input id="buyer-email" type="email" placeholder="z. B. rechnung@kunde.de" />
             </div>
           </div>
 
-          <div class="button-row">
-            <button type="submit">
-              <span>In XRechnung umwandeln</span>
-            </button>
-          </div>
-
-          <div>
-            <div id="status" class="status-pill">
-              Bereit für Upload
+          <div class="form-section">
+            <div class="form-section-title">Optionale Angaben</div>
+            <div class="form-row">
+              <label for="leitweg">Leitweg-ID (BuyerReference)</label>
+              <input id="leitweg" type="text" placeholder="z. B. 12345-67890-12345-67" />
+            </div>
+            <div class="form-row">
+              <label for="supplier-id">Lieferantennummer beim Kunden</label>
+              <input id="supplier-id" type="text" placeholder="Kundennummer beim Rechnungsempfänger" />
             </div>
           </div>
-          <div id="support-container" class="support-container" hidden>
-            <p id="support-hint" class="support-hint" hidden>
-              Dieses Projekt ist für dich kostenlos.<br/>
-              Mit deiner Unterstützung finanziere ich Betrieb, Weiterentwicklung und Fehlerbehebung.
-            </p>
-            <a
-              href="https://ko-fi.com/C0C31OT01F"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="kofi-btn"
-              aria-label="Projekt auf Ko‑Fi unterstützen"
-              title="Projekt auf Ko‑Fi unterstützen"
-            >
-              Kaffee ausgeben ☕
-            </a>
-          </div>
-        </form>
+        </div>
       </section>
-    </main>
+
+      <!-- Konvertierung -->
+      <div class="button-row">
+        <button type="submit">
+          <span>In XRechnung umwandeln</span>
+        </button>
+      </div>
+
+      <div>
+        <div id="status" class="status-pill">
+          Bereit für Upload
+        </div>
+      </div>
+
+      <div id="support-container" class="support-container" hidden>
+        <p id="support-hint" class="support-hint" hidden>
+          Hat geklappt? Kaffee gefällig! ☕<br/>
+          Mit deiner Unterstützung halte ich das Tool kostenlos, aktuell und weiterentwickelt.
+        </p>
+        <a
+          href="https://ko-fi.com/C0C31OT01F"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="kofi-btn"
+          aria-label="Projekt auf Ko‑Fi unterstützen"
+          title="Projekt auf Ko‑Fi unterstützen"
+        >☕ Kaffee ausgeben</a>
+      </div>
+    </form>
 
     <section class="info-section">
       <button
