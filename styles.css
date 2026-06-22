@@ -463,6 +463,7 @@ button[type="submit"]:hover { opacity: 0.88; }
 }
 .site-nav a { color: var(--accent-text-badge); text-decoration: none; }
 .site-nav a:hover { text-decoration: underline; }
+.site-nav a:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: 2px; }
 .site-nav-sep { color: var(--text-subtle); opacity: 0.5; user-select: none; }
 .footer-updated { color: var(--text-subtle); font-size: 0.78rem; }
 
@@ -487,8 +488,10 @@ button[type="submit"]:hover { opacity: 0.88; }
   border-bottom: 1px solid var(--border);
 }
 .comparison-table tr:last-child td { border-bottom: none; }
+.comparison-table tbody tr:hover { background: var(--surface-hover); }
 
 /* === Responsive === */
 @media (max-width: 560px) {
   body { padding: 16px 10px; }
+  .app-footer { flex-direction: column; align-items: flex-start; gap: 8px; }
 }
