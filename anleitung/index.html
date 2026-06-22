@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>ZUGFeRD in XRechnung umwandeln – Schritt-für-Schritt Anleitung</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Anleitung: ZUGFeRD oder Factur-X PDF in 3 Schritten zu XRechnung XML konvertieren. Kostenlos, lokal im Browser, keine Datenübertragung." />
+  <link rel="canonical" href="https://rechnungskonverter.de/anleitung/" />
+  <meta name="author" content="Simon Fieber" />
+  <meta property="og:title" content="ZUGFeRD in XRechnung umwandeln – Schritt-für-Schritt Anleitung" />
+  <meta property="og:description" content="Anleitung: ZUGFeRD oder Factur-X PDF in 3 Schritten zu XRechnung XML konvertieren. Kostenlos, lokal im Browser, keine Datenübertragung." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rechnungskonverter.de/anleitung/" />
+  <meta property="og:image" content="https://rechnungskonverter.de/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="ZUGFeRD in XRechnung umwandeln – Schritt-für-Schritt" />
+  <meta name="twitter:description" content="Anleitung: ZUGFeRD / Factur-X PDF in 3 Schritten zu XRechnung XML. Kostenlos, lokal im Browser." />
+  <meta name="twitter:image" content="https://rechnungskonverter.de/og-image.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "HowTo",
+      "name": "ZUGFeRD oder Factur-X PDF in XRechnung umwandeln",
+      "description": "Schritt-für-Schritt-Anleitung: ZUGFeRD- oder Factur-X-PDF-Rechnung im Browser in eine gültige XRechnung-XML umwandeln, ohne Daten hochzuladen.",
+      "step": [
+        {
+          "@type": "HowToStep",
+          "name": "PDF mit ZUGFeRD oder Factur-X auswählen",
+          "text": "Öffne rechnungskonverter.de. Ziehe deine ZUGFeRD- oder Factur-X-PDF-Rechnung in das Feld Datei hierhin ziehen oder klicken, oder wähle sie per Dateidialog aus. Der Dateiname erscheint unter Ausgewählte Datei."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "PDF analysieren und Angaben ergänzen",
+          "text": "Klicke auf In XRechnung umwandeln. Das Tool liest die eingebettete XML aus der PDF. Falls nötig, werden Felder für Käufer-E-Mail, Leitweg-ID und Lieferantennummer freigeschaltet."
+        },
+        {
+          "@type": "HowToStep",
+          "name": "XRechnung XML herunterladen",
+          "text": "Nach einem kurzen Countdown wird die erzeugte XRechnung-XML automatisch heruntergeladen. Speichere die Datei und übermittle sie im E-Rechnungsportal des Auftraggebers oder importiere sie in deine Buchhaltungssoftware."
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <div class="badge">
+          <span>🔒 Läuft nur auf deinem Gerät, deine Dateien werden nicht hochgeladen.</span>
+        </div>
+        <h1 class="app-title">ZUGFeRD / Factur-X in XRechnung umwandeln</h1>
+        <p class="app-description">
+          rechnungskonverter.de wandelt ZUGFeRD- und Factur-X-PDF-Rechnungen mit eingebetteter XML in drei Schritten zu gültiger XRechnung-XML um – vollständig im Browser, ohne Datenübertragung. Das Tool ist kostenlos, erfordert keine Registrierung und läuft auf Desktop und Smartphone.
+        </p>
+      </div>
+    </header>
+
+    <section class="info-section">
+      <h2 id="schritt-1">Schritt 1: PDF auswählen</h2>
+      <p>
+        Öffne <a href="/">rechnungskonverter.de</a> in einem aktuellen Browser. Ziehe deine ZUGFeRD- oder Factur-X-PDF-Rechnung in das Feld <strong>Datei hierhin ziehen oder klicken</strong>, oder klicke auf das Feld und wähle die Datei über den Dateidialog aus. Der Dateiname erscheint anschließend unter <em>Ausgewählte Datei</em>.
+      </p>
+      <p>Unterstützte Formate: PDF-Dateien mit eingebetteter XML (ZUGFeRD 1.x, 2.0, 2.1, 2.2; Factur-X alle Profile).</p>
+
+      <h2 id="schritt-2">Schritt 2: PDF analysieren und Angaben ergänzen</h2>
+      <p>
+        Klicke auf <strong>In XRechnung umwandeln</strong>. Das Tool extrahiert die eingebettete XML aus der PDF und prüft automatisch, ob bereits eine XRechnung-Guideline gesetzt ist.
+      </p>
+      <p>Falls nötig, werden zusätzliche Felder freigeschaltet:</p>
+      <ul class="seo-list">
+        <li><strong>Käufer-E-Mail</strong> – Pflichtfeld gemäß EN16931, wenn die E-Mail nicht in der PDF hinterlegt ist.</li>
+        <li><strong>Leitweg-ID</strong> – Routing-Kennung öffentlicher Auftraggeber. Besteht aus drei mit Bindestrichen getrennten Blöcken (z.&nbsp;B. <code>12345-67890-12</code>). Wird vom Auftraggeber mitgeteilt. Optional.</li>
+        <li><strong>Lieferantennummer</strong> – Kundennummer beim Rechnungsempfänger. Optional.</li>
+      </ul>
+
+      <h2 id="schritt-3">Schritt 3: XRechnung herunterladen</h2>
+      <p>
+        Nach einem kurzen Countdown wird die erzeugte XRechnung-XML automatisch heruntergeladen. Speichere die Datei und übermittle sie im E-Rechnungsportal deines Auftraggebers (z.&nbsp;B. Bundesportal ZRE oder OZG-RE) oder importiere sie in deine Buchhaltungssoftware.
+      </p>
+
+      <div class="seo-divider"></div>
+
+      <h2>Rechtsgrundlage</h2>
+      <p>
+        XRechnung ist seit dem 27.&nbsp;November 2020 Pflichtstandard für elektronische Rechnungen an Bundesbehörden gemäß E-Rechnungsverordnung (§&nbsp;4 ERechV). Für Aufträge auf Landes- und Kommunalebene gelten Übergangszeiträume, die je nach Bundesland variieren.
+      </p>
+    </section>
+
+    <div style="text-align: center; margin: 20px 0;">
+      <a href="/" class="kofi-btn">→ Zum Konverter</a>
+    </div>
+
+    <footer class="app-footer">
+      <div class="footer-left">
+        <a
+          href="https://github.com/simonfieberIT/ZUGFeRD-to-XRechnung"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-version"
+          aria-label="GitHub-Projekt ZUGFeRD-to-XRechnung"
+          title="Quellcode auf GitHub (öffnet in neuem Tab)"
+        >v1.0.6</a>
+        <span class="footer-separator">·</span>
+        <time datetime="2026-06-22" class="footer-updated">Juni 2026</time>
+      </div>
+      <nav class="site-nav" aria-label="Seitennavigation">
+        <a href="/">Konverter</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/anleitung/" aria-current="page">Anleitung</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/faq/">FAQ</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/zugferd-xrechnung/">ZUGFeRD &amp; XRechnung</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="https://fieber-it.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="https://fieber-it.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
