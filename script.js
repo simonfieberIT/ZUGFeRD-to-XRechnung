@@ -50,6 +50,7 @@ const supplierIdInput = document.getElementById("supplier-id");
 const buyerEmailInput = document.getElementById("buyer-email");
 const dropzone = document.querySelector(".dropzone");
 const subtleFooterBanner = document.getElementById("subtle-footer-banner");
+const step2 = document.getElementById("step-2");
 
 const convertButton = form ? form.querySelector('button[type="submit"]') : null;
 const buttonRow = form ? form.querySelector(".button-row") : null;
@@ -71,6 +72,11 @@ function resetProcessingState(options = {}) {
   currentBaseName = null;
   upgradeNeeded = false;
   extraFields.style.display = "none";
+  if (step2) {
+    step2.classList.add("step-locked");
+    step2.setAttribute("aria-disabled", "true");
+    [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = true; });
+  }
   leitwegInput.value = "";
   supplierIdInput.value = "";
   buyerEmailRequired = false;
@@ -248,6 +254,11 @@ form.addEventListener("submit", async (e) => {
       // EN16931 / Factur-X ohne gesetzte XRechnung-Guideline
       upgradeNeeded = true;
       extraFields.style.display = "block";
+      if (step2) {
+        step2.classList.remove("step-locked");
+        step2.removeAttribute("aria-disabled");
+        [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = false; });
+      }
 
       buyerEmailRequired = !buyerEmailPresent;
       if (buyerEmailInput) {
