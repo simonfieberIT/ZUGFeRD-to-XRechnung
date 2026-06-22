@@ -453,6 +453,41 @@ button[type="submit"]:hover { opacity: 0.88; }
 .app-footer a { color: var(--accent-text-badge); text-decoration: none; }
 .app-footer a:hover { text-decoration: underline; }
 
+/* === Site Navigation === */
+.site-nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 4px 8px;
+  font-size: 0.78rem;
+}
+.site-nav a { color: var(--accent-text-badge); text-decoration: none; }
+.site-nav a:hover { text-decoration: underline; }
+.site-nav-sep { color: var(--text-subtle); opacity: 0.5; user-select: none; }
+.footer-updated { color: var(--text-subtle); font-size: 0.78rem; }
+
+/* === Comparison Table === */
+.comparison-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  margin: 10px 0;
+}
+.comparison-table th {
+  background: var(--accent-bg);
+  color: var(--text);
+  padding: 8px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--border);
+  font-weight: 600;
+}
+.comparison-table td {
+  padding: 7px 12px;
+  border-bottom: 1px solid var(--border);
+}
+.comparison-table tr:last-child td { border-bottom: none; }
+
 /* === Responsive === */
 @media (max-width: 560px) {
   body { padding: 16px 10px; }
