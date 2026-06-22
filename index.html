@@ -100,7 +100,7 @@
       <section class="step" id="step-1">
         <div class="step-header">
           <span class="step-number">1</span>
-          <span class="step-title">PDF auswählen</span>
+          <h2 class="step-title">PDF auswählen</h2>
         </div>
 
         <label class="dropzone">
@@ -117,10 +117,10 @@
       </section>
 
       <!-- Schritt 2: Angaben ergänzen (locked until PDF analysis) -->
-      <section class="step step-locked" id="step-2">
+      <section class="step step-locked" id="step-2" aria-disabled="true">
         <div class="step-header">
           <span class="step-number">2</span>
-          <span class="step-title">Angaben ergänzen</span>
+          <h2 class="step-title">Angaben ergänzen</h2>
         </div>
 
         <div id="xrechnung-fields">
@@ -128,7 +128,7 @@
             <div class="form-section-title">Pflichtfeld für die XRechnung</div>
             <div class="form-row">
               <label for="buyer-email">Käufer E-Mail (elektronische Adresse)</label>
-              <input id="buyer-email" type="email" placeholder="z. B. rechnung@kunde.de" />
+              <input id="buyer-email" type="email" placeholder="z. B. rechnung@kunde.de" disabled />
             </div>
           </div>
 
@@ -136,11 +136,11 @@
             <div class="form-section-title">Optionale Angaben</div>
             <div class="form-row">
               <label for="leitweg">Leitweg-ID (BuyerReference)</label>
-              <input id="leitweg" type="text" placeholder="z. B. 12345-67890-12345-67" />
+              <input id="leitweg" type="text" placeholder="z. B. 12345-67890-12345-67" disabled />
             </div>
             <div class="form-row">
               <label for="supplier-id">Lieferantennummer beim Kunden</label>
-              <input id="supplier-id" type="text" placeholder="Kundennummer beim Rechnungsempfänger" />
+              <input id="supplier-id" type="text" placeholder="Kundennummer beim Rechnungsempfänger" disabled />
             </div>
           </div>
         </div>
