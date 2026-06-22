@@ -1,0 +1,182 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <title>Häufige Fragen zum ZUGFeRD / XRechnung Konverter – rechnungskonverter.de</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Antworten auf häufige Fragen zu rechnungskonverter.de: DSGVO, Kosten, unterstützte Formate, Leitweg-ID und mehr." />
+  <link rel="canonical" href="https://rechnungskonverter.de/faq/" />
+  <meta name="author" content="Simon Fieber" />
+  <meta property="og:title" content="Häufige Fragen – ZUGFeRD / XRechnung Konverter" />
+  <meta property="og:description" content="Antworten auf häufige Fragen zu rechnungskonverter.de: DSGVO, Kosten, unterstützte Formate, Leitweg-ID und mehr." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://rechnungskonverter.de/faq/" />
+  <meta property="og:image" content="https://rechnungskonverter.de/og-image.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Häufige Fragen – ZUGFeRD / XRechnung Konverter" />
+  <meta name="twitter:description" content="DSGVO, Kosten, unterstützte Formate, Leitweg-ID: alle Fragen zu rechnungskonverter.de beantwortet." />
+  <meta name="twitter:image" content="https://rechnungskonverter.de/og-image.png" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+  <link rel="stylesheet" href="../styles.css" />
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Werden meine Dateien hochgeladen oder gespeichert?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Nein. Der gesamte Vorgang läuft lokal im Browser auf deinem Gerät. Die PDF-Datei verlässt zu keinem Zeitpunkt deinen Rechner. Es findet keine Datenübertragung an externe Server statt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist die Nutzung kostenlos?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja, das Tool ist vollständig kostenlos. Es gibt keine Registrierung, keine Abonnements und keine versteckten Kosten. Wenn dir das Tool hilft, kannst du das Projekt freiwillig über Ko-Fi unterstützen."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Welche ZUGFeRD- und Factur-X-Versionen werden unterstützt?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das Tool unterstützt ZUGFeRD 1.0, ZUGFeRD 2.0, ZUGFeRD 2.1, ZUGFeRD 2.2 sowie Factur-X in allen Profilen (MINIMUM, BASIC WL, BASIC, EN16931, EXTENDED). Voraussetzung ist eine PDF mit eingebetteter XML-Rechnung."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Kann ich die erzeugte XRechnung an Behörden senden?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Die erzeugte XML entspricht dem XRechnung-Standard EN16931 und kann bei öffentlichen Auftraggebern über deren E-Rechnungsportale eingereicht werden, zum Beispiel über das Bundesportal ZRE oder OZG-RE."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was ist die Leitweg-ID und woher bekomme ich sie?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Die Leitweg-ID ist eine Routing-Kennung, die öffentliche Auftraggeber verwenden, um Rechnungen intern zuzuordnen. Sie wird vom Auftraggeber mitgeteilt und besteht aus drei mit Bindestrichen getrennten Blöcken (z. B. 12345-67890-12). Das Tool fragt sie optional ab."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Was passiert, wenn meine PDF keine XRechnung-Guideline enthält?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Das Tool analysiert die eingebettete XML und erkennt automatisch, ob die Guideline bereits auf XRechnung gesetzt ist. Fehlt die Guideline, schaltet das Tool Eingabefelder frei, über die du Leitweg-ID, Lieferantennummer und Käufer-E-Mail ergänzen kannst."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Funktioniert der Konverter auch auf dem Smartphone?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Der Konverter läuft auf allen aktuellen Browsern auf Desktop, Tablet und Smartphone. Es wird keine App benötigt."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Ist der Quellcode öffentlich?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Ja. Der Quellcode ist Open Source und auf GitHub verfügbar unter github.com/simonfieberIT/ZUGFeRD-to-XRechnung. Contributions und Bug Reports sind willkommen."
+          }
+        }
+      ]
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <header class="app-header">
+      <div>
+        <h1 class="app-title">Häufige Fragen</h1>
+        <p class="app-description">
+          Antworten auf die häufigsten Fragen zu rechnungskonverter.de – dem kostenlosen, DSGVO-konformen Browser-Tool zur Konvertierung von ZUGFeRD und Factur-X nach XRechnung.
+        </p>
+      </div>
+    </header>
+
+    <section class="info-section">
+      <div class="faq-item">
+        <strong>Werden meine Dateien hochgeladen oder gespeichert?</strong>
+        <p>Nein. Der gesamte Vorgang läuft lokal im Browser auf deinem Gerät. Die PDF-Datei verlässt zu keinem Zeitpunkt deinen Rechner. Es findet keine Datenübertragung an externe Server statt.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Ist die Nutzung kostenlos?</strong>
+        <p>Ja, das Tool ist vollständig kostenlos. Es gibt keine Registrierung, keine Abonnements und keine versteckten Kosten. Wenn dir das Tool hilft, kannst du das Projekt freiwillig über Ko-Fi unterstützen.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Welche ZUGFeRD- und Factur-X-Versionen werden unterstützt?</strong>
+        <p>Das Tool unterstützt ZUGFeRD 1.0, 2.0, 2.1 und 2.2 sowie Factur-X in allen Profilen (MINIMUM, BASIC WL, BASIC, EN16931, EXTENDED). Voraussetzung ist eine PDF mit eingebetteter XML-Rechnung.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Kann ich die erzeugte XRechnung an Behörden senden?</strong>
+        <p>Ja. Die erzeugte XML entspricht dem XRechnung-Standard EN16931 und kann bei öffentlichen Auftraggebern über deren E-Rechnungsportale eingereicht werden – zum Beispiel über das Bundesportal ZRE oder OZG-RE.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Was ist die Leitweg-ID und woher bekomme ich sie?</strong>
+        <p>Die Leitweg-ID ist eine Routing-Kennung öffentlicher Auftraggeber zur internen Zuordnung von Rechnungen. Sie wird vom Auftraggeber mitgeteilt und besteht aus drei mit Bindestrichen getrennten Blöcken (z.&nbsp;B. <code>12345-67890-12</code>). Das Tool fragt sie optional ab.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Was passiert, wenn meine PDF keine XRechnung-Guideline enthält?</strong>
+        <p>Das Tool erkennt automatisch, ob die Guideline bereits auf XRechnung gesetzt ist. Fehlt sie, schaltet das Tool Eingabefelder für Leitweg-ID, Lieferantennummer und Käufer-E-Mail frei.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Funktioniert der Konverter auch auf dem Smartphone?</strong>
+        <p>Ja. Der Konverter läuft auf allen aktuellen Browsern auf Desktop, Tablet und Smartphone. Es wird keine App benötigt.</p>
+      </div>
+
+      <div class="faq-item">
+        <strong>Ist der Quellcode öffentlich?</strong>
+        <p>Ja. Der Quellcode ist Open Source auf <a href="https://github.com/simonfieberIT/ZUGFeRD-to-XRechnung" target="_blank" rel="noopener noreferrer">GitHub</a>. Contributions und Bug Reports sind willkommen.</p>
+      </div>
+    </section>
+
+    <div style="text-align: center; margin: 20px 0;">
+      <a href="/" class="kofi-btn">→ Zum Konverter</a>
+    </div>
+
+    <footer class="app-footer">
+      <div class="footer-left">
+        <a
+          href="https://github.com/simonfieberIT/ZUGFeRD-to-XRechnung"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="footer-version"
+          aria-label="GitHub-Projekt ZUGFeRD-to-XRechnung"
+          title="Quellcode auf GitHub (öffnet in neuem Tab)"
+        >v1.0.6</a>
+        <span class="footer-separator">·</span>
+        <time datetime="2026-06-22" class="footer-updated">Juni 2026</time>
+      </div>
+      <nav class="site-nav" aria-label="Seitennavigation">
+        <a href="/">Konverter</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/anleitung/">Anleitung</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/faq/" aria-current="page">FAQ</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="/zugferd-xrechnung/">ZUGFeRD &amp; XRechnung</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="https://fieber-it.com/impressum" target="_blank" rel="noopener noreferrer">Impressum</a>
+        <span aria-hidden="true" class="site-nav-sep">·</span>
+        <a href="https://fieber-it.com/datenschutz" target="_blank" rel="noopener noreferrer">Datenschutz</a>
+      </nav>
+    </footer>
+  </div>
+</body>
+</html>
