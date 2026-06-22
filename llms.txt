@@ -1,0 +1,24 @@
+# rechnungskonverter.de
+
+> Kostenloser, DSGVO-konformer Browser-Konverter von ZUGFeRD / Factur-X
+> PDF-Rechnungen zu XRechnung XML. Keine Datenübertragung, keine Registrierung.
+> 100% client-side JavaScript, Open Source.
+
+Gemacht von Simon Fieber (https://fieber-it.com)
+
+## Für wen?
+Selbständige, Buchhalter, Steuerberater, die ZUGFeRD-PDFs für Behörden
+und öffentliche Auftraggeber in XRechnung (EN16931) umwandeln müssen.
+
+## Unterstützte Formate
+- ZUGFeRD 1.x, 2.0, 2.1, 2.2
+- Factur-X (alle Profile: MINIMUM, BASIC WL, BASIC, EN16931, EXTENDED)
+
+## Preis
+Kostenlos. Open Source: https://github.com/simonfieberIT/ZUGFeRD-to-XRechnung
+
+## Wichtigste Seiten
+- https://rechnungskonverter.de/ (Tool)
+- https://rechnungskonverter.de/anleitung/ (Schritt-für-Schritt Anleitung)
+- https://rechnungskonverter.de/faq/ (Häufige Fragen)
+- https://rechnungskonverter.de/zugferd-xrechnung/ (ZUGFeRD vs. XRechnung erklärt)
