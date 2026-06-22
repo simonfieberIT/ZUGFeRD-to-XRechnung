@@ -1,0 +1,46 @@
+{
+  "planPath": "docs/superpowers/plans/2026-06-22-seo-subpages.md",
+  "tasks": [
+    {
+      "id": 0,
+      "subject": "Task 0: styles.css — Shared CSS additions",
+      "status": "pending",
+      "description": "**Goal:** Add CSS for site nav, footer timestamp, and comparison table so all subsequent tasks can use these classes.\n\n**Files:**\n- Modify: `styles.css` (append before `/* === Responsive ===*/` block)\n\n**Acceptance Criteria:**\n- [ ] `.site-nav` defined with flex-wrap, gap, font-size\n- [ ] `.site-nav-sep` defined with muted color\n- [ ] `.footer-updated` defined\n- [ ] `.comparison-table` defined with th/td/tr styles\n\n**Verify:** `grep -c \"site-nav\\|footer-updated\\|comparison-table\" styles.css` → outputs `6` or more\n\n```json:metadata\n{\"files\": [\"styles.css\"], \"verifyCommand\": \"grep -c 'site-nav|footer-updated|comparison-table' styles.css\", \"acceptanceCriteria\": [\".site-nav defined\", \".site-nav-sep defined\", \".footer-updated defined\", \".comparison-table defined\"], \"modelTier\": \"mechanical\"}\n```"
+    },
+    {
+      "id": 1,
+      "subject": "Task 1: index.html — Homepage SEO overhaul",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** Clean homepage to tool-only, add full SEO meta/schema, expand description, restructure footer with site nav.\n\n**Files:**\n- Modify: `index.html`\n\n**Acceptance Criteria:**\n- [ ] Title contains 'kostenlos, lokal, DSGVO-konform'\n- [ ] Twitter card meta present\n- [ ] Author meta present\n- [ ] WebApplication and Organization schemas present\n- [ ] FAQPage and HowTo schemas removed\n- [ ] info-section block absent\n- [ ] app-description is >= 40 words\n- [ ] Footer has nav.site-nav with links to all 4 pages + Impressum + Datenschutz\n- [ ] time element with datetime='2026-06-22' present\n\n**Verify:** `grep -c \"site-nav|WebApplication|twitter:card|kostenlos, lokal\" index.html` → `4`\n\n```json:metadata\n{\"files\": [\"index.html\"], \"verifyCommand\": \"grep -c 'site-nav|WebApplication|twitter:card|kostenlos, lokal' index.html\", \"acceptanceCriteria\": [\"Title contains 'kostenlos, lokal, DSGVO-konform'\", \"WebApplication schema present\", \"FAQPage schema absent\", \"info-section absent\", \"site-nav in footer\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 2,
+      "subject": "Task 2: anleitung/index.html — HowTo subpage",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** Create the step-by-step guide page at /anleitung/ with HowTo schema, full content, and site nav footer.\n\n**Files:**\n- Create: `anleitung/index.html`\n\n**Acceptance Criteria:**\n- [ ] File exists at anleitung/index.html\n- [ ] HowTo schema present with 3 steps\n- [ ] Leitweg-ID explanation present\n- [ ] Legal reference (ERechV) present\n- [ ] Footer has nav.site-nav\n- [ ] ../styles.css referenced\n\n**Verify:** `grep -c \"HowTo|Leitweg|ERechV|site-nav\" anleitung/index.html` → `4`\n\n```json:metadata\n{\"files\": [\"anleitung/index.html\"], \"verifyCommand\": \"grep -c 'HowTo|Leitweg|ERechV|site-nav' anleitung/index.html\", \"acceptanceCriteria\": [\"HowTo schema with 3 steps\", \"Leitweg-ID explained\", \"ERechV referenced\", \"site-nav in footer\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 3,
+      "subject": "Task 3: faq/index.html — FAQ subpage",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** Create the FAQ page at /faq/ with FAQPage schema and 8 complete Q&As.\n\n**Files:**\n- Create: `faq/index.html`\n\n**Acceptance Criteria:**\n- [ ] File exists at faq/index.html\n- [ ] FAQPage schema present with >= 7 questions\n- [ ] All 8 questions answered with >= 1 complete sentence\n- [ ] Footer has nav.site-nav\n- [ ] ../styles.css referenced\n\n**Verify:** `grep -c \"Question|site-nav|FAQPage\" faq/index.html` → `12` or more\n\n```json:metadata\n{\"files\": [\"faq/index.html\"], \"verifyCommand\": \"grep -c 'Question|site-nav|FAQPage' faq/index.html\", \"acceptanceCriteria\": [\"FAQPage schema with >= 7 questions\", \"8 HTML FAQ items\", \"site-nav in footer\", \"../styles.css referenced\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 4,
+      "subject": "Task 4: zugferd-xrechnung/index.html — Comparison subpage",
+      "status": "pending",
+      "blockedBy": [0],
+      "description": "**Goal:** Create the ZUGFeRD vs. XRechnung explanation page at /zugferd-xrechnung/ with Article schema and comparison table.\n\n**Files:**\n- Create: `zugferd-xrechnung/index.html`\n\n**Acceptance Criteria:**\n- [ ] File exists at zugferd-xrechnung/index.html\n- [ ] Article schema present with dateModified: '2026-06-22'\n- [ ] comparison-table present with >= 5 rows\n- [ ] Dense answer block in app-description\n- [ ] Footer has nav.site-nav\n- [ ] ../styles.css referenced\n\n**Verify:** `grep -c \"Article|comparison-table|site-nav|dateModified\" zugferd-xrechnung/index.html` → `4`\n\n```json:metadata\n{\"files\": [\"zugferd-xrechnung/index.html\"], \"verifyCommand\": \"grep -c 'Article|comparison-table|site-nav|dateModified' zugferd-xrechnung/index.html\", \"acceptanceCriteria\": [\"Article schema with dateModified\", \"comparison-table with >= 5 rows\", \"site-nav in footer\"], \"modelTier\": \"standard\"}\n```"
+    },
+    {
+      "id": 5,
+      "subject": "Task 5: Root files — llms.txt, pricing.md, robots.txt, sitemap.xml",
+      "status": "pending",
+      "description": "**Goal:** Add AI-agent context files and update crawl/index infrastructure.\n\n**Files:**\n- Create: `llms.txt`\n- Create: `pricing.md`\n- Modify: `robots.txt`\n- Modify: `sitemap.xml`\n\n**Acceptance Criteria:**\n- [ ] llms.txt exists with all 4 page URLs\n- [ ] pricing.md exists with '0 EUR' stated\n- [ ] robots.txt explicitly allows GPTBot, PerplexityBot, ClaudeBot, anthropic-ai, Google-Extended\n- [ ] sitemap.xml contains 4 url entries, all with lastmod 2026-06-22\n\n**Verify:** `grep -c \"GPTBot|PerplexityBot|ClaudeBot|anthropic-ai|Google-Extended\" robots.txt` → `5`; `grep -c \"<url>\" sitemap.xml` → `4`\n\n```json:metadata\n{\"files\": [\"llms.txt\", \"pricing.md\", \"robots.txt\", \"sitemap.xml\"], \"verifyCommand\": \"grep -c 'GPTBot|PerplexityBot|ClaudeBot|anthropic-ai|Google-Extended' robots.txt && grep -c '<url>' sitemap.xml\", \"acceptanceCriteria\": [\"llms.txt with 4 page URLs\", \"pricing.md with 0 EUR\", \"robots.txt 5 AI bot entries\", \"sitemap.xml 4 URLs with 2026-06-22\"], \"modelTier\": \"mechanical\"}\n```"
+    }
+  ],
+  "lastUpdated": "2026-06-22"
+}
