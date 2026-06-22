@@ -52,6 +52,18 @@ const dropzone = document.querySelector(".dropzone");
 const subtleFooterBanner = document.getElementById("subtle-footer-banner");
 const step2 = document.getElementById("step-2");
 
+function setStep2Locked(isLocked) {
+  if (!step2) return;
+  if (isLocked) {
+    step2.classList.add("step-locked");
+    step2.setAttribute("aria-disabled", "true");
+  } else {
+    step2.classList.remove("step-locked");
+    step2.removeAttribute("aria-disabled");
+  }
+  [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = isLocked; });
+}
+
 const convertButton = form ? form.querySelector('button[type="submit"]') : null;
 const buttonRow = form ? form.querySelector(".button-row") : null;
 if (convertButton) {
@@ -72,11 +84,7 @@ function resetProcessingState(options = {}) {
   currentBaseName = null;
   upgradeNeeded = false;
   extraFields.style.display = "none";
-  if (step2) {
-    step2.classList.add("step-locked");
-    step2.setAttribute("aria-disabled", "true");
-    [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = true; });
-  }
+  setStep2Locked(true);
   leitwegInput.value = "";
   supplierIdInput.value = "";
   buyerEmailRequired = false;
@@ -230,11 +238,7 @@ form.addEventListener("submit", async (e) => {
         if (extraFields) {
           extraFields.style.display = "none";
         }
-        if (step2) {
-          step2.classList.add("step-locked");
-          step2.setAttribute("aria-disabled", "true");
-          [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = true; });
-        }
+        setStep2Locked(true);
 
         const baseNameForDownload = currentBaseName || "Rechnung";
         startDownloadCountdown(
@@ -259,11 +263,7 @@ form.addEventListener("submit", async (e) => {
       // EN16931 / Factur-X ohne gesetzte XRechnung-Guideline
       upgradeNeeded = true;
       extraFields.style.display = "block";
-      if (step2) {
-        step2.classList.remove("step-locked");
-        step2.removeAttribute("aria-disabled");
-        [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = false; });
-      }
+      setStep2Locked(false);
 
       buyerEmailRequired = !buyerEmailPresent;
       if (buyerEmailInput) {
