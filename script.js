@@ -230,6 +230,11 @@ form.addEventListener("submit", async (e) => {
         if (extraFields) {
           extraFields.style.display = "none";
         }
+        if (step2) {
+          step2.classList.add("step-locked");
+          step2.setAttribute("aria-disabled", "true");
+          [leitwegInput, supplierIdInput, buyerEmailInput].forEach((el) => { if (el) el.disabled = true; });
+        }
 
         const baseNameForDownload = currentBaseName || "Rechnung";
         startDownloadCountdown(
