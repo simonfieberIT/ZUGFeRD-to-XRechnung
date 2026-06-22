@@ -4,28 +4,25 @@
     {
       "id": 0,
       "subject": "Task 0: Security Fixes",
-      "status": "pending",
+      "status": "completed",
       "description": "**Goal:** Remove the AdSense script block and convert script.js to an ES module, eliminating the GDPR data leak and window scope exposure.\n\n**Files:**\n- Modify: `index.html` (lines 17–18 and 286)\n\n**Acceptance Criteria:**\n- [ ] `index.html` contains no reference to `pagead2.googlesyndication.com` or `adsbygoogle`\n- [ ] The `script.js` script tag has `type=\"module\"` and no `defer` attribute\n- [ ] Opening the page in browser: DevTools → Network shows zero requests to `*.googlesyndication.com`\n- [ ] DevTools → Console: `window.currentXmlDoc` returns `undefined`\n- [ ] Tool still converts a ZUGFeRD PDF successfully end-to-end\n\n**Verify:** Open page. DevTools → Network: no googlesyndication requests. Console: `window.currentXmlDoc` → `undefined`. Upload ZUGFeRD PDF → conversion succeeds.\n\n```json:metadata\n{\"files\": [\"index.html\"], \"verifyCommand\": \"open index.html in browser; DevTools Network: no googlesyndication; Console: window.currentXmlDoc === undefined\", \"acceptanceCriteria\": [\"no AdSense script in index.html\", \"script.js tag has type=module\", \"window.currentXmlDoc is undefined in console\", \"conversion still works\"], \"modelTier\": \"mechanical\"}\n```"
     },
     {
       "id": 1,
       "subject": "Task 1: CSS Design System Rewrite",
-      "status": "pending",
-      "blockedBy": [0],
+      "status": "completed",
       "description": "**Goal:** Replace styles.css entirely with a token-based system supporting Dark+Indigo (default) and light mode via prefers-color-scheme.\n\n**Files:**\n- Modify: `styles.css`\n\n**Acceptance Criteria:**\n- [ ] `:root` defines all design tokens as CSS custom properties\n- [ ] `@media (prefers-color-scheme: light)` block overrides tokens for light mode\n- [ ] No `backdrop-filter` anywhere in the file\n- [ ] Dark mode: deep navy background, indigo accents\n- [ ] Light mode: `#f1f5f9` background, white card surfaces, same indigo accent\n\n**Verify:** DevTools → Rendering → toggle `prefers-color-scheme`. `grep -n 'backdrop-filter' styles.css` → no output.\n\n```json:metadata\n{\"files\": [\"styles.css\"], \"verifyCommand\": \"grep -c backdrop-filter styles.css && DevTools Rendering toggle prefers-color-scheme\", \"acceptanceCriteria\": [\"CSS custom properties defined in :root\", \"light mode override block present\", \"no backdrop-filter\", \"visual switch confirmed in both modes\"], \"modelTier\": \"standard\"}\n```"
     },
     {
       "id": 2,
       "subject": "Task 2: HTML Layout Restructure",
-      "status": "pending",
-      "blockedBy": [1],
+      "status": "completed",
       "description": "**Goal:** Replace the two-column grid with a single-column form wrapping two step sections, and update Ko-Fi hint text.\n\n**Files:**\n- Modify: `index.html`\n\n**Acceptance Criteria:**\n- [ ] No `.app-main` or `grid-template-columns` in `index.html`\n- [ ] `<form id=\"upload-form\">` wraps both step sections and button/status/support\n- [ ] `#step-2` has class `step-locked` initially\n- [ ] All 10 required IDs present: file-input, file-name, buyer-email, leitweg, supplier-id, upload-form, xrechnung-fields, status, support-container, support-hint\n- [ ] `#support-hint` text begins with \"Hat geklappt?\"\n\n**Verify:** `grep -c 'app-main\\|grid-template' index.html` → 0. `grep -n 'id=\"file-input\"\\|id=\"file-name\"\\|id=\"buyer-email\"\\|id=\"leitweg\"\\|id=\"supplier-id\"\\|id=\"upload-form\"\\|id=\"xrechnung-fields\"\\|id=\"status\"\\|id=\"support-container\"\\|id=\"support-hint\"' index.html` → 10 lines.\n\n```json:metadata\n{\"files\": [\"index.html\"], \"verifyCommand\": \"grep -c 'app-main|grid-template' index.html\", \"acceptanceCriteria\": [\"no app-main or grid-template in index.html\", \"step-2 has step-locked class\", \"all 10 required IDs present\", \"support-hint text starts with Hat geklappt\"], \"modelTier\": \"standard\"}\n```"
     },
     {
       "id": 3,
       "subject": "Task 3: JS Step Indicator State + Full End-to-End Test",
-      "status": "pending",
-      "blockedBy": [2],
+      "status": "completed",
       "description": "**Goal:** Wire up the step-locked CSS class in script.js and verify the complete conversion flow works.\n\n**Files:**\n- Modify: `script.js`\n\n**Acceptance Criteria:**\n- [ ] `step2` DOM reference added near top of script.js\n- [ ] `step2.classList.add('step-locked')` called in resetProcessingState\n- [ ] `step2.classList.remove('step-locked')` called when upgrade is needed\n- [ ] `step2.classList.add('step-locked')` in isXRechnungAlready branch\n- [ ] Full conversion flow works: upload → step 2 unlocks → fill fields → convert → download\n- [ ] Step 2 re-locks after new file selection\n\n**Verify:** Upload ZUGFeRD PDF → `document.getElementById('step-2').classList.contains('step-locked')` → false after analysis. Select new file → same check → true.\n\n```json:metadata\n{\"files\": [\"script.js\"], \"verifyCommand\": \"manual browser test: upload ZUGFeRD PDF, check step-2 classList in console\", \"acceptanceCriteria\": [\"step2 variable defined\", \"step-locked added in resetProcessingState\", \"step-locked removed when upgradeNeeded=true\", \"full conversion flow works end-to-end\"], \"modelTier\": \"standard\"}\n```"
     }
   ],
